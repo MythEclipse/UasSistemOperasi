@@ -23,7 +23,6 @@ int main() {
     if (mkdir(baseDir, 0777) == -1) {
         perror("Gagal membuat direktori utama");
         exit(1);
-    }
 
     // Membuat subdirektori utama di dalam "Project"
     for (int i = 0; i < sizeof(mainSubDirs) / sizeof(mainSubDirs[0]); i++) {
