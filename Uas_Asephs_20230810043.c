@@ -3,59 +3,69 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-int main(){
-    // direktori utama
-    char baseDir[] = "project";
-    // subdirektori utama
-    char mainSubDirs[][20]= {"src", "include", "lib", "bin"};
-    // subdirektori src
+int main() {
+    // Direktori utama
+    char baseDir[] = "Project";
+
+    // Subdirektori utama
+    char mainSubDirs[][20] = {"src", "include", "lib", "bin"};
+
+    // Subdirektori di dalam 'src'
     char srcSubDirs[][20] = {"main", "utils"};
-    // subdirektori include
+
+    // Subdirektori di dalam 'include'
     char includeSubDirs[][20] = {"common", "config"};
-    // subdirektori lib
+
+    // Subdirektori di dalam 'lib'
     char libSubDirs[][20] = {"external", "internal"};
-    // membuat direktori utama
-    if (mkdir(baseDir, 0777) == -1){
-        perror("gagal membuat direktori utama");
+
+    // Membuat direktori utama
+    if (mkdir(baseDir, 0777) == -1) {
+        perror("Gagal membuat direktori utama");
         exit(1);
     }
 
-    // membuat subdirektori utama didalam "project"
-    for (int i = 0; i< sizeof(mainSubDirs)/sizeof(mainSubDirs[0]); i++){
-        char path [100];
-        sprintf(path,sizeof(path), "%s/%s", baseDir, mainSubDirs[i]);
-        if (mkdir(path, 0777) == -1){
-            perror("gagal membuat subdirektori utama");
+    // Membuat subdirektori utama di dalam "Project"
+    for (int i = 0; i < sizeof(mainSubDirs) / sizeof(mainSubDirs[0]); i++) {
+        char path[50];
+        snprintf(path, sizeof(path), "%s/%s", baseDir, mainSubDirs[i]);
+        if (mkdir(path, 0777) == -1) {
+            perror("Gagal membuat subdirektori utama");
             exit(1);
         }
     }
-    // membuat subdirektori didalam "src"
-    for (int i = 0; i< sizeof(srcSubDirs)/sizeof(srcSubDirs[0]); i++){
-        char path [100];
-        sprintf(path,sizeof(path), "%s/%s/%s", baseDir, mainSubDirs[0], srcSubDirs[i]);
-        if (mkdir(path, 0777) == -1){
-            perror("gagal membuat subdirektori src");
+
+    // Membuat subdirektori di dalam 'src'
+    for (int i = 0; i < sizeof(srcSubDirs) / sizeof(srcSubDirs[0]); i++) {
+        char path[50];
+        snprintf(path, sizeof(path), "%s/src/%s", baseDir, srcSubDirs[i]);
+        if (mkdir(path, 0777) == -1) {
+            perror("Gagal membuat subdirektori di dalam 'src'");
             exit(1);
         }
     }
-    // membuat subdirektori didalam "include"
-    for (int i = 0; i< sizeof(includeSubDirs)/sizeof(includeSubDirs[0]); i++){
-        char path [100];
-        sprintf(path,sizeof(path), "%s/%s/%s", baseDir, mainSubDirs[1], includeSubDirs[i]);
-        if (mkdir(path, 0777) == -1){
-            perror("gagal membuat subdirektori include");
+
+    // Membuat subdirektori di dalam 'include'
+    for (int i = 0; i < sizeof(includeSubDirs) / sizeof(includeSubDirs[0]); i++) {
+        char path[50];
+        snprintf(path, sizeof(path), "%s/include/%s", baseDir, includeSubDirs[i]);
+        if (mkdir(path, 0777) == -1) {
+            perror("Gagal membuat subdirektori di dalam 'include'");
             exit(1);
         }
     }
-    // membuat subdirektori didalam "lib"
-    for (int i = 0; i< sizeof(libSubDirs)/sizeof(libSubDirs[0]); i++){
-        char path [100];
-        sprintf(path,sizeof(path), "%s/%s/%s", baseDir, mainSubDirs[2], libSubDirs[i]);
-        if (mkdir(path, 0777) == -1){
-            perror("gagal membuat subdirektori lib");
+
+    // Membuat subdirektori di dalam 'lib'
+    for (int i = 0; i < sizeof(libSubDirs) / sizeof(libSubDirs[0]); i++) {
+        char path[50];
+        snprintf(path, sizeof(path), "%s/lib/%s", baseDir, libSubDirs[i]);
+        if (mkdir(path, 0777) == -1) {
+            perror("Gagal membuat subdirektori di dalam 'lib'");
             exit(1);
         }
     }
-    printf("Struktur direktori berhasil dibuat\n");
+
+    // Pesan sukses
+    printf("Struktur direktori berhasil dibuat!\n");
     return 0;
 }
